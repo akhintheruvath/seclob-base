@@ -1,8 +1,12 @@
+import { Fragment } from 'react';
 import './App.css';
+import SignInPage from './SignInPage/SignInPage';
 
 function App() {
   return (
-    <div>Initial</div>
+    <Fragment>
+      <SignInPage />
+    </Fragment>
   );
 }
 

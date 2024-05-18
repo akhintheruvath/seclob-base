@@ -1,0 +1,16 @@
+#sign-in-page {
+   width: 100%;
+   display: flex;
+}
+
+#sign-in-left {
+   width: 50%;
+   height: 100vh;
+   background-color: #605BFF;
+}
+
+#sign-in-right {
+   width: 50%;
+   height: 100vh;
+   background-color: #F8FAFF;
+}
