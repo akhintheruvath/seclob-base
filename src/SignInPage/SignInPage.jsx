@@ -38,6 +38,9 @@ const SignInPage = () => {
             </div>
           </div>
           <SignInForm />
+          <div className='w-full flex justify-center mt-5'>
+            <p className='font-lato text-base text-[#858585]'>Don't have an account? <a href='' className='text-[#346BD4]'>Register here</a></p>
+          </div>
         </div>
       </div>
     </div>
