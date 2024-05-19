@@ -1,6 +1,14 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 
 export const SignInForm = () => {
+  const navigate = useNavigate();
+
+  const signin = (e) => {
+   e.preventDefault();
+   navigate("/dashboard");
+  }
+
   return (
     <div>
       <div className='px-9 py-10 bg-white rounded-2xl'>
@@ -12,7 +20,7 @@ export const SignInForm = () => {
             <a href='' className='font-lato text-[#346BD4] text-base'>Forgot password?</a>
             <button
                className='bg-[#605BFF] w-full flex items-center justify-center p-2 mt-6 rounded-xl font-montserrat text-white font-bold'
-               onClick={(e) => e.preventDefault()}
+               onClick={signin}
             >
                Sign In
             </button>
