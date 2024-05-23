@@ -7,17 +7,18 @@ import { DiscordLogo } from './DiscordLogo';
 import { GoogleLogo } from './GoogleLogo';
 import { AppleLogo } from './AppleLogo';
 import { SignInForm } from './SignInForm';
+import './SignInPage.css';
 
 const SignInPage = () => {
   return (
-    <div className="flex">
-      <div className="flex flex-col items-center justify-around h-screen w-1/2 bg-[#605BFF]">
-        <div><BaseLogoSignIn /></div>
+    <div className="flex bg-[#F8FAFF]">
+      <div id='left-div' className="flex flex-col items-center justify-between py-16 h-screen w-1/2 bg-[#605BFF]">
+        <div className='ml-36 flex w-full items-start'><BaseLogoSignIn /></div>
         <div>
-          <h1 className='font-montserrat font-bold text-white text-7xl'>BASE</h1>
+          <h1 className='font-montserrat font-bold text-white text-7xl mr-20'>BASE</h1>
         </div>
         <div>
-          <div className='flex flex-row'>
+          <div className='flex flex-row mr-20'>
             <div className='mx-6'><GitHubLogo /></div>
             <div className='mx-6'><TwitterLogo /></div>
             <div className='mx-6'><LinkedInLogo /></div>
@@ -25,7 +26,7 @@ const SignInPage = () => {
           </div>
         </div>
       </div>
-      <div className="w-1/2 bg-[#F8FAFF] flex items-center h-screen pl-24">
+      <div className="w-1/2 flex items-center h-screen pl-24">
         <div>
           <h3 className='font-montserrat font-bold text-black text-4xl'>Sign In</h3>
           <p className='font-lato text-black text-base mt-3 mb-6'>Sign in to your account</p>
