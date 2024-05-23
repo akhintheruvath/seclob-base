@@ -13,7 +13,7 @@ export const Dashboard = () => {
       <div className='w-72 h-screen'>
          <Sidebar activeLink={activeLink} />
       </div>
-      <div className='w-full bg-[#F8FAFF] p-8'>
+      <div className='w-full bg-[#F8FAFF] p-8 overflow-hidden'>
         <div className='py-6 flex justify-between items-center'>
           <h2 className='font-figtree font-semibold text-2xl text-black'>
             {
