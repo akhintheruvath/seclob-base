@@ -75,7 +75,7 @@ export const UploadComponent = () => {
    return (
       <div>
          <div className='flex justify-center mb-16 md:mb-32'>
-            <div className='w-11/12 sm:w-3/5 lg:w-2/5 h-96 min-w-80 min-h-60 bg-white rounded-lg p-4 mt-8 md:mt-32 shadow-md md:shadow-none'>
+            <div className='w-11/12 sm:w-3/5 md:w-4/5 lg:w-3/5 xl:w-2/5 h-96 min-w-80 min-h-60 bg-white rounded-lg p-4 mt-8 md:mt-32 shadow-md md:shadow-none'>
                <div
                   className={`w-full flex flex-col p-3 items-center justify-center h-[284px] border-dashed border-2 border-[#EBEBEB] rounded-lg ${isDragging && 'bg-gray-200'}`}
                   onDragOver={handleDragOverAndEnter}
