@@ -62,6 +62,7 @@ export const UploadComponent = () => {
          setTimeout(() => {
             setSelectedFile(null);
             setIsUploading(false);
+            fileInputRef.current.value = "";
          }, 3000);
       }
    }
