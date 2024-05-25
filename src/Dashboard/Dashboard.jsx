@@ -1,39 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import { UploadComponent } from './UploadComponent';
-import { BlankNotificationIcon } from './BlankNotificationIcon';
+import { NotificationAndProfile } from './NotificationAndProfile';
+import { MenuIcon } from './MenuIcon';
+import { BaseLogo } from './SidebarIcons';
+import { HeadingComponent } from './HeadingComponent';
 
 export const Dashboard = () => {
+  const [isSidebarVisible, setSidebarVisible] = useState(false);
   const location = useLocation();
   const activeLink = location.pathname;
 
+  const toggleSidebar = () => {
+    setSidebarVisible(prev => !prev);
+  };
+
   return (
     <div className='flex'>
-      <div className='w-72 h-screen'>
-         <Sidebar activeLink={activeLink} />
+      <div className={`w-5/6 md:w-72 h-screen fixed top-0 left-0 md:static transition-transform transform ${isSidebarVisible ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 z-40`}>
+        <Sidebar
+          isSidebarVisible={isSidebarVisible}
+          toggleSidebar={toggleSidebar}
+          activeLink={activeLink}
+        />
       </div>
-      <div className='w-full bg-[#F8FAFF] p-8 overflow-hidden'>
-        <div className='py-6 flex justify-between items-center'>
-          <h2 className='font-figtree font-semibold text-2xl text-black'>
-            {
-              activeLink === "/upload"
-                ? "Upload CSV"
-                : <div className='flex items-center justify-center w-full h-full'>{activeLink.split("/")[1].toUpperCase()}</div>
-            }
-          </h2>
-          <div className='flex items-center'>
-            <BlankNotificationIcon />
-            <div class="relative w-9 h-9 overflow-hidden rounded-full ml-8">
-              <img src="https://s3-alpha-sig.figma.com/img/203e/bb33/eccd71f34638f7751900105c639d563d?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=nbUdO90HVm5HeNxt3gOaeRhnrCdp2H5UxH-anXe4xrERqQz1gEGDyww78W~B4CX7iWRdviyGNN6F9mbHeuIKFYaelIk6STgV2~F~yBRhzLd1bFjRu~kglY9kinum9LzEHzp2sQyLP255kqqoQ7M10cdOR2sfu4FbGxNRamiDxfnvcHCCY1s3~sqrlSskE5pMvxpUSpY-C2Tiewa1G3rLoiepajNCdF8H~iYoagJQPlWmcMfCHMZeJs8Wt89aAUXYUzCvHW0Z-~QoirKYusJII-OF4sQqtBqhhgLaDWtb85ZnUWFrI5AHUrif~FR7qJecYhIoundiu2Hnn3dZYj8tVw__" alt="Profile" class="absolute top-[-18px] w-20 h-20 object-cover" />
-            </div>
+      <div className='w-full bg-[#F8FAFF] md:p-8 overflow-hidden'>
+        <div className={`md:hidden w-full fixed flex shadow-sm justify-between items-center bg-white px-5 py-7 z-30`}>
+          <div className='w-1/3 flex justify-between items-center'>
+            <span className='mr-1' onClick={toggleSidebar}><MenuIcon /></span>
+            <BaseLogo isSmallScreen={true} />
+            <h2 className='text-xl font-semibold text-[#030229]'>Base</h2>
           </div>
+          <NotificationAndProfile />
         </div>
-         {
-            activeLink === "/upload"
-              ? <UploadComponent />
-              : <div className='flex items-center justify-center w-full h-full'>{activeLink.split("/")[1].toUpperCase()}</div>
-         }
+        <div className={`md:hidden mt-28 pt-4 justify-between items-center ${activeLink === "/upload" && 'pl-8'}`}>
+          <HeadingComponent activeLink={activeLink} />
+        </div>
+        <div className='py-6 hidden md:flex justify-between items-center'>
+          <HeadingComponent activeLink={activeLink} />
+          <NotificationAndProfile />
+        </div>
+        {
+          activeLink === "/upload"
+            ? <UploadComponent />
+            : <div className='flex items-center justify-center w-full h-screen md:h-full'>{activeLink.split("/")[1].toUpperCase()}</div>
+        }
       </div>
     </div>
   );

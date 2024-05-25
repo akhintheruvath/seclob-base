@@ -10,13 +10,17 @@ import {
    SettingsIcon,
 } from "./SidebarIcons";
 import { NavLink } from './NavLink';
+import { MenuCloseIcon } from './MenuCloseIcon';
 
-export const Sidebar = ({ activeLink }) => {
+export const Sidebar = ({ activeLink, isSidebarVisible, toggleSidebar }) => {
 
   return (
-    <div className='pt-9'>
-      <div className='flex items-center justify-center pt-5 pb-11'>
-         <div><BaseLogo /></div><h2 className='ml-4 text-[#030229] font-nunito font-semibold text-2xl leading-8'>Base</h2>
+    <div className={`pt-4 md:pt-9 bg-white h-screen md:h-auto rounded-r-3xl md:rounded-none md:shadow-none ${isSidebarVisible && 'shadow-2xl'}`}>
+      <div className='flex items-center justify-between md:justify-center pt-5 pb-10 md:pb-11'>
+         <div className='flex items-center'>
+            <div className='ml-5 md:ml-0'><BaseLogo /></div><h2 className='ml-4 text-[#030229] font-nunito font-semibold text-2xl leading-8'>Base</h2>
+         </div>
+         <div className='md:hidden mr-5' onClick={toggleSidebar}><MenuCloseIcon /></div>
       </div>
       <nav>
          <ul>

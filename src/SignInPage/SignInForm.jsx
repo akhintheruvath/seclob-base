@@ -6,7 +6,7 @@ export const SignInForm = () => {
 
   const signin = (e) => {
    e.preventDefault();
-   navigate("/dashboard");
+   navigate("/upload");
   }
 
   return (

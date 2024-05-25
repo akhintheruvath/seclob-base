@@ -66,15 +66,16 @@ export const UploadComponent = () => {
       }
    }
 
-   const handleDropDownClick = (i) => {
+   const handleDropDownClick = (i, e) => {
       setIsDropdownOpen(prev => !prev);
       setClickedIndex(i);
+      e.preventDefault();
    }
 
    return (
       <div>
-         <div className='flex justify-center mb-32'>
-            <div className='w-2/5 h-96 min-w-80 min-h-60 bg-white rounded-lg p-4 mt-32'>
+         <div className='flex justify-center mb-16 md:mb-32'>
+            <div className='w-11/12 sm:w-3/5 lg:w-2/5 h-96 min-w-80 min-h-60 bg-white rounded-lg p-4 mt-8 md:mt-32 shadow-md md:shadow-none'>
                <div
                   className={`w-full flex flex-col p-3 items-center justify-center h-[284px] border-dashed border-2 border-[#EBEBEB] rounded-lg ${isDragging && 'bg-gray-200'}`}
                   onDragOver={handleDragOverAndEnter}
@@ -100,10 +101,16 @@ export const UploadComponent = () => {
                         </>
                      )
                      : (
-                        <p className='mt-6 text-[#999CA0]'>
-                           Drop your excel sheet here or
-                           <label htmlFor='fileInput' className='text-[#605BFF]'> browse</label>
-                        </p>
+                        <>
+                           <p className='hidden md:block mt-6 text-[#999CA0]'>
+                              Drop your excel sheet here or
+                              <label htmlFor='fileInput' className='text-[#605BFF]'> browse</label>
+                           </p>
+                           <p className='md:hidden mt-6 text-[#999CA0]'>
+                              Upload your excel sheet
+                              <label htmlFor='fileInput' className='text-[#605BFF]'> here</label>
+                           </p>
+                        </>
                      )
                   }
                   <input
@@ -132,13 +139,13 @@ export const UploadComponent = () => {
             </div>
          </div>
 
-         <h2 className='ml-14 mb-11 font-figtree font-semibold text-2xl text-black'>Uploads</h2>
-         <div className='mx-14 p-4 bg-[#F5F5F5] rounded-lg overflow-x-auto'>
+         <h2 className='ml-7 md:ml-14 mb-11 font-figtree font-semibold text-2xl text-black'>Uploads</h2>
+         <div className='mx-7 md:mx-14 p-4 bg-[#F5F5F5] rounded-lg overflow-x-auto'>
             <table className='w-full bg-[#F5F5F5]'>
                <thead>
                   <tr>
                      <th className='font-figtree text-sm text-[#231F20] text-left pt-1 pb-5 pl-5 min-w-24'>SI No.</th>
-                     <th className='font-figtree text-sm text-[#231F20] text-left pt-1 pb-5 pl-5 min-w-56'>Links</th>
+                     <th className='font-figtree text-sm text-[#231F20] text-left pt-1 pb-5 pl-5 md:min-w-56'>Links</th>
                      <th className='font-figtree text-sm text-[#231F20] text-left pt-1 pb-5 pl-5 min-w-36'>Prefix</th>
                      <th className='font-figtree text-sm text-[#231F20] text-left pt-1 pb-5 pl-5 min-w-60'>Add Tags</th>
                      <th className='font-figtree text-sm text-[#231F20] text-left pt-1 pb-5 pl-5'>Selected Tags</th>
@@ -150,15 +157,15 @@ export const UploadComponent = () => {
                      return (
                         <Fragment key={index}>
                            <tr className='bg-white'>
-                              <td className='font-figtree text-sm text-[#231F20] px-5 py-4 min-w-24 rounded-l-lg'>{obj.id < 10 ? `0${obj.id}` : obj.id}</td>
-                              <td className='font-figtree min-w-56 text-sm text-[#231F20] px-5 py-4'>
+                              <td className='bg-[#F5F5F5] md:bg-white font-figtree text-sm text-[#231F20] px-5 py-4 min-w-24 rounded-l-lg'>{obj.id < 10 ? `0${obj.id}` : obj.id}</td>
+                              <td className='font-figtree md:min-w-56 text-sm text-[#231F20] px-5 py-4 rounded-l-lg md:rounded-none'>
                                  <a href={`http://${obj.links}`} target='_blank' rel="noreferrer" className='text-[#5B93FF] underline cursor-pointer'>{obj.links}</a>
                               </td>
                               <td className='font-figtree text-sm text-[#231F20] px-5 py-4  min-w-36'>{obj.prefix}</td>
                               <td className='font-figtree text-sm text-[#231F20] px-5 py-4 min-w-60'>
                                  <div
                                     className='flex items-center justify-center border border-[#F2F2F2] rounded-lg py-1 cursor-pointer w-40'
-                                    onClick={() => handleDropDownClick(index)}
+                                    onClick={(e) => handleDropDownClick(index, e)}
                                  >
                                     <span className='mr-3'>Select Tags</span>
                                     <DropDownIcon />
