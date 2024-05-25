@@ -175,6 +175,7 @@ export const UploadComponent = () => {
                                        <DropDownComponent
                                           isOpen={isDropdownOpen}
                                           onClose={() => setIsDropdownOpen(false)}
+                                          selectedTags={obj.selectedTags}
                                        />
                                     )
                                  }
